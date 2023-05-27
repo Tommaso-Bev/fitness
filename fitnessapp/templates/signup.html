@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sign up</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="../static/assets/img/favicon.ico" rel="icon">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Flaticon Font -->
+    <link href="../static/assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../static/assets/css/style.min.css" rel="stylesheet">
+
+    <!-- Stylesheet for the signup form -->
+    <link href="../static/assets/css/signup.css" rel="stylesheet">
+</head>
+<body style="background-color: black;">
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0 nav-bar">
+        <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
+            <a href="\" class="navbar-brand">
+                <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">tracking</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav ml-auto p-4 bg-secondary">
+                    <a href="/" class="nav-item nav-link active">Home</a>
+                    <a href="#" class="nav-item nav-link">About Us</a>
+                    <a href="#" class="nav-item nav-link">Our Features</a>
+                    <a href="/workouts" class="nav-item nav-link">Workouts</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Login form start -->
+    <img src="../static/assets/img/b-2.webp" style="position: absolute; width: 100%;">
+    <div class="container signup">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card bg-transparent">
+                    <h2 class="card-title text-center text-white">Sign up.</h2>
+                    {% for message in messages %}
+                        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alertdialog">
+                            <strong class="text-danger">{{message}}</strong> 
+                        </div>
+                    {% endfor %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="card-body ">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="confirm-password" placeholder="Confirm password" required>
+                            </div>
+                            <div class="d-flex flex-row align-items-center justify-content-between">
+                                <a href="\login">Login</a>
+                                <button class="btn btn-primary">Create Account</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login form end -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+
+</body>    
+</html>
