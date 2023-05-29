@@ -17,6 +17,8 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../static/assets/css/style.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/assets/css/workouts.css">
 </head>
 
 <body class="" style="background-color: black;">
@@ -36,16 +38,10 @@
                     <a href="#" class="nav-item nav-link">Our Features</a>
                     <a href="#" class="nav-item nav-link">Workouts</a>
                     {%if request.user.is_authenticated%}
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu text-capitalize">
-                                <a href="/profile" class="dropdown-item">Profile</a>
-                                <a href="#" class="dropdown-item">Workout progression</a>
-                            </div>
+                        <div class="nav-item">
+                            <a href="/profile" class="nav-link dropdown" data-toggle="dropdown">Profile</a>
                         </div>
                     {%endif%}
-                    
-                    
                     <a href="/logout" class="nav-item nav-link text-danger">Log out</a>
                     
                 </div>
@@ -59,24 +55,25 @@
     <div class="container" style="padding-top: 13%;">
         <div class="row">
             {% for workout in workout_list %}
-            <div class="col-lg-4 pb-3 d-flex">
-                <div class="container border pb-4 flex-fill" style="background-color: black;">
-                    <h2 class="text-center text-white pt-3">{{ workout.workout_name }}</h2>
+            <div class="col-lg-4 pb-3 d-flex cont">
+                <div class="container border pb-1 work" style="background-color: black;">
+                    <h2 class="text-center text-danger pt-3">{{ workout.workout_name }}</h2>
                     <hr class="border">
                     <div class="container">
                         <p>Muscle Plan: <span class="text-white">{{ workout.muscle_plan }}</span></p>
                         <p>Description: <span class="text-white">{{ workout.description }}</span></p>   
                     </div>
                     <hr class="border">
-                    <div class="container">
+                    <div class="container pb-3">
                         <img src='{{workout.image.url}}' style="width:100%; filter: brightness(70%);">
                     </div>
-                    <div class="container text-center pt-3"><button type="button" class="btn btn-outline-light">Sign me up</button></div>
-                    
                 </div>
-                
+                <form class="d-flex align-items-center justify-content-center bttn" method="post" action="{% url 'register_workout' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="workout_name" value="{{ workout.workout_name }}">
+                    <button type="submit" class="btn btn-outline-danger realbtn text-white">Sign me up</button>
+                </form>
             </div>
-            
             {% endfor %}
         </div>
         

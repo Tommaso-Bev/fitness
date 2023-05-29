@@ -3,7 +3,9 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.utils.safestring import mark_safe
-from .models import workout
+from .models import workout, workout_plan
+from .form import WorkoutPlanForm
+
 # Create your views here.
 
 def Home(request):
@@ -62,8 +64,20 @@ def profile(request):
     email=user.email
     username = mark_safe(username)
     email = mark_safe(email)
-    return render(request, 'profile.html', {'username':username,'email':email})
+    w_list=workout_plan.objects.filter(username=request.user.username)
+    return render(request, "profile.html", {'username':username,'email':email, 'w_list': w_list})
 
 def workouts(request):
     workout_list= workout.objects.all()
     return render(request, "workouts.html", {'workout_list': workout_list})
+
+def register_workout(request):
+    if request.method == 'POST':
+        username=request.user.username
+        workout_name=request.POST.get('workout_name')
+        if workout_plan.objects.filter(username=username, workout_name=workout_name).exists():
+            return redirect('workouts')
+        workoutp=workout_plan(username=username, workout_name=workout_name)
+        workoutp.save()
+        return redirect('profile')
+    return render(request, 'workouts.html')
