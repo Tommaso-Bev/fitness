@@ -24,7 +24,7 @@
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
             <a href="/" class="navbar-brand">
-                <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Your profile</h1>
+                <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">Workouts</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -54,20 +54,27 @@
     </div>
     <!-- Navbar end -->
 
-
-    
-
-    <a href="#" class="btn btn-outline-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
+    <img src="../static/assets/img/fia.webp" style="position: absolute; width: 100%; filter: blur(0.5rem);">
     
     <div class="container" style="padding-top: 13%;">
         <div class="row">
             {% for workout in workout_list %}
-            <div class="col-lg-4 p-3">
-                <h2 class="text-center">{{ workout.workout_name }}</h2>
-                <p>Muscle Plan: {{ workout.muscle_plan }}</p>
-                <p>Description: {{ workout.description }}</p>
+            <div class="col-lg-4 pb-3 d-flex">
+                <div class="container border pb-4 flex-fill" style="background-color: black;">
+                    <h2 class="text-center text-white pt-3">{{ workout.workout_name }}</h2>
+                    <hr class="border">
+                    <div class="container">
+                        <p>Muscle Plan: <span class="text-white">{{ workout.muscle_plan }}</span></p>
+                        <p>Description: <span class="text-white">{{ workout.description }}</span></p>   
+                    </div>
+                    <hr class="border">
+                    <div class="container">
+                        <img src='{{workout.image.url}}' style="width:100%; filter: brightness(70%);">
+                    </div>
+                    <div class="container text-center pt-3"><button type="button" class="btn btn-outline-light">Sign me up</button></div>
+                    
+                </div>
+                
             </div>
             
             {% endfor %}
@@ -75,19 +82,6 @@
         
     </div>
     
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
 </body>
 
 </html>

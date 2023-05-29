@@ -22,7 +22,7 @@
     </head>
 
     <body class="">
-        <img src="../static/assets/img/fia.webp" style="width: 100%; position:absolute">
+        <img src="../static/assets/img/giga.jpg" style="width: 100%; position:absolute; filter: brightness(50%); left: 50%; right: 50%; transform: translate(-50%,-50%); top: 50%; filter: blur(0.5rem);">
         <!-- Navbar Start -->
         <div class="container-fluid p-0 nav-bar">
             <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
@@ -57,7 +57,7 @@
         </div>
         <!-- Navbar end -->
         <section class="profile" style="background-color: black;">
-            <div class="container position-relative"><h1 class="text-white text-center">Welcome home {{username|safe}}</h1></div>
+            <div class="container position-relative"><h1 class="text-white text-center">Welcome home <span class="text-uppercase text-danger">{{username|safe}}</span></h1></div>
             <div class="container " media>
               <div class="row justify-content-center">
                 <div class="col-lg-8 ">
@@ -68,7 +68,7 @@
                           <p class="mb-0">Username</p>
                         </div>
                         <div class="col-sm-9">
-                          <p class=" mb-0 text-white">{{username|safe}}</p>
+                          <p class=" mb-0 text-danger">{{username|safe}}</p>
                         </div>
                       </div>
                       <hr class="border border-white">
