@@ -6,6 +6,9 @@ class workout(models.Model):
    muscle_plan=models.CharField(max_length=25)
    description=models.CharField(max_length=300)
    image=models.ImageField(upload_to='img')
+
+   def __str__(self):
+      return self.workout_name
    
    
 class workout_plan(models.Model):

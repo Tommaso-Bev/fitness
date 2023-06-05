@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.utils.safestring import mark_safe
-from .models import workout, workout_plan
+from .models import workout, workout_plan, workout_level
 # Create your views here.
 
 def Home(request):
@@ -82,6 +82,10 @@ def register_workout(request):
 
 def work_prog(request):
     workout_name = request.GET.get('workout_name')
-    w_plan = workout_plan.objects.get(username=request.user.username, workout_name=workout_name)
+    
     w = workout.objects.get(workout_name=workout_name)
-    return render(request, 'workoutprogression.html', {'w_plan': w_plan, 'w': w})
+    w_plan = workout_plan.objects.get(username=request.user.username, workout_name=workout_name)
+    l = workout_level.objects.get(workout_name=w, level=w_plan.progress)
+
+
+    return render(request, 'workoutprogression.html', {'w_plan': w_plan, 'w': w, 'w_level': l})
