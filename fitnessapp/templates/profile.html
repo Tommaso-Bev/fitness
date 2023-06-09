@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,15 +92,17 @@
                           <hr class="border border-white">
                           {% for workout_plan in w_list %}
                           <form method="post">
-                            {%csrf_token%}
+                            {% csrf_token %}
                             <div class="pb-3 form-group">
-                              <p class="mb-1 text-w " style="font-size: .77rem;"><a href="{% url 'workoutprogression' %}?workout_name={{ workout_plan.workout_name }}" class="form-control"" name="workout_name" class="form-control">{{workout_plan.workout_name}}</a></p>
-                              <div class="progress rounded" style="height: 5px;">
-                                <div class="progress-bar" role="progressbar" style="width: calc({{ workout_plan.progress }}*10%)" aria-valuenow="{{workout_plan.progress}}"aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
+                                <p class="mb-1 text-w" style="font-size: .77rem;">
+                                    <a href="{% url 'workoutprogression' workout_plan.workout_name %}" class="form-control">{{ workout_plan.workout_name }}</a>
+                                </p>
+                                <div class="progress rounded" style="height: 5px;">
+                                    <div class="progress-bar" role="progressbar" style="width: calc({{ workout_plan.progress }}*10%)" aria-valuenow="{{ workout_plan.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                             </div>  
                           </form>
-                            
+                        
                           {% endfor %}
                         </div>
                       </div>

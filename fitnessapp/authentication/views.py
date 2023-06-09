@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.utils.safestring import mark_safe
 from .models import workout, workout_plan, workout_level
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 def Home(request):
@@ -80,12 +81,25 @@ def register_workout(request):
         return redirect('profile')
     return render(request, 'workouts.html')
 
-def work_prog(request):
-    workout_name = request.GET.get('workout_name')
-    
+def workoutprogression(request, workout_name):
     w = workout.objects.get(workout_name=workout_name)
     w_plan = workout_plan.objects.get(username=request.user.username, workout_name=workout_name)
     l = workout_level.objects.get(workout_name=w, level=w_plan.progress)
+    show_button = w_plan.progress < 5
+
+    return render(request, 'workoutprogression.html', {'w_plan': w_plan, 'w': w, 'w_level': l, 'show': show_button})
 
 
-    return render(request, 'workoutprogression.html', {'w_plan': w_plan, 'w': w, 'w_level': l})
+def update_workout_plan(request, workout_name):
+    w = workout.objects.get(workout_name=workout_name)
+    w_plan = workout_plan.objects.get(username=request.user.username, workout_name=workout_name)
+    l = workout_level.objects.get(workout_name=w, level=w_plan.progress)
+    
+    if request.method == 'POST' and request.POST.get('button_clicked'):
+        w_plan.progress += 1
+        w_plan.save()
+        show_button = w_plan.progress < 5
+        return redirect('workoutprogression', workout_name=workout_name)
+    
+    show_button = w_plan.progress < 5
+    return render(request, 'workoutprogression.html', {'w_plan': w_plan, 'w': w, 'w_level': l, 'show': show_button})

@@ -8,6 +8,7 @@ urlpatterns = [
     path('logout', views.signout, name="logout"),
     path('profile', views.profile, name="profile"),
     path('workouts', views.workouts, name="workouts"),
-    path('register-workout/', views.register_workout, name='register_workout'),
-    path('work_prog/', views.work_prog, name='workoutprogression'),
+    path('register_workout/', views.register_workout, name='register_workout'),
+    path('workoutprogression/<str:workout_name>/', views.workoutprogression, name='workoutprogression'),
+    path('update-workout-plan/<str:workout_name>/', views.update_workout_plan, name='update_workout_plan'),
 ]

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,21 +68,32 @@
                             
                         </div>
                         <div>
-                            <div class="container-fluid row">
-                                <div class="col-3">
+                            <div class="text-danger">{{w_level.level}}</div>
+                            <div class="container-fluid row pt-3">
+                                <div class="col-lg-3">
                                     <img src="{{w_level.image1.url}}" alt="" style="width: 100%;">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-lg-3">
                                 <img src="{{w_level.image2.url}}" alt="" style="width: 100%;">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-lg-3">
                                     <img src="{{w_level.image3.url}}" alt="" style="width: 100%;">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-lg-3">
                                     <img src="{{w_level.image4.url}}" alt="" style="width: 100%;">
                                 </div>
                             </div>
                         </div>
+                        <form action="{% url 'update_workout_plan' w_plan.workout_name %}" method="post">
+                            {% csrf_token %}
+                            {% if show %}
+                                <div class="container-fluid align-items-center justify-content-center mt-5">
+                                    <input type="hidden" name="button_clicked" value="true">
+                                    <input class="btn btn-primary" type="submit" value="Next level">
+                                </div>
+                            {% endif %}
+                        </form>
+                        
                     </div>
                 </div>
             </div>
