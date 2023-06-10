@@ -26,7 +26,7 @@ class workout_level(models.Model):
             MinValueValidator(0),
             MaxValueValidator(5),
    ])
-   image1 = models.ImageField(upload_to='workout_images', default='\media\workout_images\not_found_prova_2bv4so2.png')
-   image2 = models.ImageField(upload_to='workout_images', default='\media\workout_images\not_found_prova_2bv4so2.png')
-   image3 = models.ImageField(upload_to='workout_images', default='\media\workout_images\not_found_prova_2bv4so2.png')
-   image4 = models.ImageField(upload_to='workout_images', default='\media\workout_images\not_found_prova_2bv4so2.png')
+   image1 = models.ImageField(upload_to='workout_images', default='workout_images\not_found_prova_2bv4so2.png')
+   image2 = models.ImageField(upload_to='workout_images', default='workout_images\not_found_prova_2bv4so2.png')
+   image3 = models.ImageField(upload_to='workout_images', default='workout_images\not_found_prova_2bv4so2.png')
+   image4 = models.ImageField(upload_to='workout_images', default='workout_images\not_found_prova_2bv4so2.png')

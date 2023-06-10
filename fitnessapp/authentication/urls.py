@@ -1,5 +1,8 @@
-from django.urls import path
+from django.urls import path, include
 from authentication import views
+from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.Home, name="Home"),
@@ -11,4 +14,4 @@ urlpatterns = [
     path('register_workout/', views.register_workout, name='register_workout'),
     path('workoutprogression/<str:workout_name>/', views.workoutprogression, name='workoutprogression'),
     path('update-workout-plan/<str:workout_name>/', views.update_workout_plan, name='update_workout_plan'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

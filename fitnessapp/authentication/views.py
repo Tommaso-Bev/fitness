@@ -103,3 +103,17 @@ def update_workout_plan(request, workout_name):
     
     show_button = w_plan.progress < 5
     return render(request, 'workoutprogression.html', {'w_plan': w_plan, 'w': w, 'w_level': l, 'show': show_button})
+
+def workoutprogression(request, workout_name):
+    # Retrieve workout progress
+    w_plan = WorkoutPlan.objects.get(workout_name=workout_name)
+    
+    # Perform multiplication in the view
+    progress_multiplier = 20
+    multiplied_progress = w_plan.progress * progress_multiplier
+
+    context = {
+        'w_plan': w_plan,
+        'multiplied_progress': multiplied_progress,
+    }
+    return render(request, 'workoutprogression.html', context)
