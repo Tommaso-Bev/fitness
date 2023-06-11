@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,15 +8,15 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- Favicon -->
-    <link href="../static/assets/img/favicon.ico" rel="icon">
+    <link href="{% static 'assets/img/favicon.ico' %}" rel="icon">
 
     <!-- Font Awesome -->
 
     <!-- Flaticon Font -->
-    <link href="../static/assets/lib/flaticon/font/flaticon.css" rel="stylesheet">
+    <link href="{% static 'assets/lib/flaticon/font/flaticon.css' %}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="../static/assets/css/style.min.css" rel="stylesheet">
+    <link href="{% static 'assets/css/style.min.css'%}" rel="stylesheet">
 </head>
 
 <body class="bg-white">
@@ -65,7 +66,7 @@
         <div id="blog-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="../static/assets/img/carousel-1.jpg" alt="Image">
+                    <img class="w-100" src="{% static 'assets/img/carousel-1.jpg'%}" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <h3 class="text-primary text-capitalize m-0">Fitness & Workout Tracker</h3>
                         <h2 class="display-2 m-0 mt-2 mt-md-4 text-white font-weight-bold text-capitalize">Start your fitness tracking</h2>
@@ -73,7 +74,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="../static/assets/img/carousel-2.jpg" alt="Image">
+                    <img class="w-100" src="{% static 'assets/img/carousel-2.jpg'%}" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <h3 class="text-primary text-capitalize m-0">Fitness & Workout Tracker</h3>
                         <h2 class="display-2 m-0 mt-2 mt-md-4 text-white font-weight-bold text-capitalize">Get your workout plan</h2>
@@ -98,7 +99,7 @@
             <div class="col-md-6 p-0 d-flex">
                 <div class="flex-fill justify-content-center bg-primary text-right text-white py-5 px-5">
                     <h3 class="display-4 mb-3 text-white font-weight-bold">Calisthenics</h3>
-                    <p style="background-image: url(../static/assets/img/pullup.png); background-size: contain; background-position: right; background-repeat: no-repeat; filter: brightness(0)invert(1);">
+                    <p style="background-image: url({% static 'assets/img/pullup.png'%}); background-size: contain; background-position: right; background-repeat: no-repeat; filter: brightness(0)invert(1);">
                         <span>
                             Calisthenics is a form of resistance exercise wherein one will leverage their own bodyweight so as to induce training stimulus, thereby developing their musculature.<br>
                             It is characterized by a lack of need for fitness equipment, large scale compound exercises and progressive overload in the form of exercise progression instead of volume or weight.<br>
@@ -112,7 +113,7 @@
                 <div class=" flex-fill justify-content-center bg-secondary text-left text-white py-5 px-5">
                     
                     <h3 class="display-4 mb-3 text-white font-weight-bold">Crossfit</h3>
-                    <p style="background-image: url(../static/assets/img/crossfit.png); background-size: contain; background-position: left; background-repeat: no-repeat; filter: brightness(0)invert(1);">
+                    <p style="background-image: url({% static 'assets/img/crossfit.png'%}); background-size: contain; background-position: left; background-repeat: no-repeat; filter: brightness(0)invert(1);">
                         Crossfit is a training methodology developed for the purposes of improving the exerciser in all aspects of fitness, taking inspiration from various older disciplines like powerlifter training and athletic training.<br>
                         Crossfit will often feature dynamic and explosive movements with a large range of motion meant to improve not only the muscular function of the exerciser, but also their cardiovascular function, mobility, athletic ability and sports-specific skills. 
                     </p>
@@ -128,7 +129,7 @@
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-6">
-                <img class="img-fluid mb-4 mb-lg-0" src="../static/assets/img/about.jpg" alt="Image">
+                <img class="img-fluid mb-4 mb-lg-0" src="{% static 'assets/img/about.jpg'%}" alt="Image">
             </div>
             <div class="col-lg-6">
                 <h2 class="display-4 font-weight-bold mb-4">Done by experts at work</h2>
@@ -200,7 +201,7 @@
             <div class="col-md-6 mb-5">
                 <div class="row align-items-center">
                     <div class="col-sm-5">
-                        <img class="img-fluid mb-3 mb-sm-0" src="../static/assets/img/feature-1.jpg" alt="Image">
+                        <img class="img-fluid mb-3 mb-sm-0" src="{% static 'assets/img/feature-1.jpg'%}" alt="Image">
                         <i class="flaticon-barbell"></i>
                     </div>
                     <div class="col-sm-7">
@@ -212,7 +213,7 @@
             <div class="col-md-6 mb-5">
                 <div class="row align-items-center">
                     <div class="col-sm-5">
-                        <img class="img-fluid mb-3 mb-sm-0" src="../static/assets/img/feature-2.jpg" alt="Image">
+                        <img class="img-fluid mb-3 mb-sm-0" src="{% static 'assets/img/feature-2.jpg'%}" alt="Image">
                         <i class="flaticon-training"></i>
                     </div>
                     <div class="col-sm-7">
@@ -224,7 +225,7 @@
             <div class="col-md-6 mb-5">
                 <div class="row align-items-center">
                     <div class="col-sm-5">
-                        <img class="img-fluid mb-3 mb-sm-0" src="../static/assets/img/feature-3.jpg" alt="Image">
+                        <img class="img-fluid mb-3 mb-sm-0" src="{% static 'assets/img/feature-3.jpg'%}" alt="Image">
                         <i class="flaticon-trends"></i>
                     </div>
                     <div class="col-sm-7">
@@ -236,7 +237,7 @@
             <div class="col-md-6 mb-5">
                 <div class="row align-items-center">
                     <div class="col-sm-5">
-                        <img class="img-fluid mb-3 mb-sm-0" src="../static/assets/img/feature-4.jpg" alt="Image">
+                        <img class="img-fluid mb-3 mb-sm-0" src="{% static 'assets/img/feature-4.jpg'%}" alt="Image">
                         <i class="flaticon-support"></i>
                     </div>
                     <div class="col-sm-7">
@@ -593,7 +594,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-5">
                 <div class="card border-0 bg-secondary text-center text-white">
-                    <img class="card-img-top" src="../static/assets/img/team-1.jpg" alt="">
+                    <img class="card-img-top" src="{% static 'assets/img/team-1.jpg'%}" alt="">
                     <div class="card-social d-flex align-items-center justify-content-center">
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -608,7 +609,7 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <div class="card border-0 bg-secondary text-center text-white">
-                    <img class="card-img-top" src="../static/assets/img/team-2.jpg" alt="">
+                    <img class="card-img-top" src="{% static 'assets/img/team-2.jpg'%}" alt="">
                     <div class="card-social d-flex align-items-center justify-content-center">
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -623,7 +624,7 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <div class="card border-0 bg-secondary text-center text-white">
-                    <img class="card-img-top" src="../static/assets/img/team-3.jpg" alt="">
+                    <img class="card-img-top" src="{% static 'assets/img/team-3.jpg'%}" alt="">
                     <div class="card-social d-flex align-items-center justify-content-center">
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -638,7 +639,7 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <div class="card border-0 bg-secondary text-center text-white">
-                    <img class="card-img-top" src="../static/assets/img/team-4.jpg" alt="">
+                    <img class="card-img-top" src="{% static 'assets/img/team-4.jpg'%}" alt="">
                     <div class="card-social d-flex align-items-center justify-content-center">
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -671,7 +672,7 @@
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
                                     <div class="d-flex align-items-center mb-4 text-white">
-                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="../static/assets/img/testimonial-1.jpg" alt="Image">
+                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="{% static 'assets/img/testimonial-1.jpg'%}" alt="Image">
                                         <div class="pl-4">
                                             <h4 class="text-primary">Client Name</h4>
                                             <p class="m-0">Profession</p>
@@ -683,7 +684,7 @@
                                 </div>
                                 <div class="carousel-item">
                                     <div class="d-flex align-items-center mb-4 text-white">
-                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="../static/assets/img/testimonial-2.jpg" alt="Image">
+                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="{% static 'assets/img/testimonial-2.jpg'%}" alt="Image">
                                         <div class="pl-4">
                                             <h4 class="text-primary">Client Name</h4>
                                             <p class="m-0">Profession</p>
@@ -695,7 +696,7 @@
                                 </div>
                                 <div class="carousel-item">
                                     <div class="d-flex align-items-center mb-4 text-white">
-                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="../static/assets/img/testimonial-3.jpg" alt="Image">
+                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="{% static 'assets/img/testimonial-3.jpg'%}" alt="Image">
                                         <div class="pl-4">
                                             <h4 class="text-primary">Client Name</h4>
                                             <p class="m-0">Profession</p>
@@ -730,7 +731,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6 mb-5 blog-item">
-                <img class="img-fluid mb-4" src="../static/assets/img/blog-1.jpg" alt="Image">
+                <img class="img-fluid mb-4" src="{% static 'assets/img/blog-1.jpg'%}" alt="Image">
                 <div class="d-flex align-items-center mb-4">
                     <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 80px; height: 80px;">
                         <small>01</small>
@@ -750,7 +751,7 @@
                 <a class="btn btn-outline-primary mt-2 px-3" href="">Read More <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="col-lg-6 mb-5 blog-item">
-                <img class="img-fluid mb-4" src="../static/assets/img/blog-2.jpg" alt="Image">
+                <img class="img-fluid mb-4" src="{% static 'assets/img/blog-2.jpg'%}" alt="Image">
                 <div class="d-flex align-items-center mb-4">
                     <div class="d-flex flex-column align-items-center justify-content-center rounded-circle bg-primary text-white" style="width: 80px; height: 80px;">
                         <small>01</small>
@@ -834,13 +835,13 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="../static/assets/lib/easing/easing.min.js"></script>
-    <script src="../static/assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="{% static 'assets/lib/easing/easing.min.js'%}"></script>
+    <script src="{% static 'assets/lib/waypoints/waypoints.min.js'%}"></script>
 
     <!-- Contact Javascript File -->
 
     <!-- Template Javascript -->
-    <script src="../static/assets/js/main.js"></script>
+    <script src="{% static 'assets/js/main.js'%}"></script>
 </body>
 
 </html>
