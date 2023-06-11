@@ -14,4 +14,5 @@ urlpatterns = [
     path('register_workout/', views.register_workout, name='register_workout'),
     path('workoutprogression/<str:workout_name>/', views.workoutprogression, name='workoutprogression'),
     path('update-workout-plan/<str:workout_name>/', views.update_workout_plan, name='update_workout_plan'),
+    path('workhistory', views.workhistory, name='workhistory'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

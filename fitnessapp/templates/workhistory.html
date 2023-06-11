@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Profile</title>
+        <title>History</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
         <!-- Favicon -->
@@ -44,7 +44,7 @@
                             <a href="#" class="nav-link dropdown" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu text-capitalize">
                                 <a href="#" class="dropdown-item">Profile</a>
-                                <a href="/workhistory" class="dropdown-item">Workout history</a>
+                                <a href="/workoutprogression" class="dropdown-item">Workout history</a>
                             </div>
                           </div>
                         {%endif%}
@@ -58,7 +58,7 @@
         </div>
         <!-- Navbar end -->
         <section class="profile" style="background-color: black;">
-            <div class="container position-relative"><h1 class="text-white text-center">Welcome home <span class="text-uppercase text-danger">{{username|safe}}</span></h1></div>
+            <div class="container position-relative"><h1 class="text-white text-center">This is your workout history  <span class="text-uppercase text-danger">{{username|safe}}</span></h1></div>
             <div class="container " media>
               <div class="row justify-content-center">
                 <div class="col-lg-8 ">
@@ -72,38 +72,26 @@
                           <p class=" mb-0 text-danger">{{username|safe}}</p>
                         </div>
                       </div>
-                      <hr class="border border-white">
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Email</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class=" mb-0">{{email|safe}}</p>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 <div class="row">
                     <div class="col-md-12 ">
                       <div class="card mb-4 mb-md-0 bg-transparent text-white border border-white">
                         <div class="card-body">
-                          <p class="mb-4"><span class="text-danger me-1">Workout progression</span> <span class="text-white">To do</span>
-                          </p>
+                          <p class="mb-4"><span class="text-danger me-1">Workout History</span></p>
                           <hr class="border border-white">
-                          {% for workout_plan in w_list %}
+                          {% for h in history %}
                           <form method="post">
-                            {% csrf_token %}
                             <div class="pb-3 form-group">
-                                <p class="mb-1 text-w" style="font-size: .77rem;">
-                                    <a href="{% url 'workoutprogression' workout_plan.workout_name %}" class="form-control">{{ workout_plan.workout_name }}</a>
+                                  <div class="container mb-1 text-w" style="font-size: .77rem;">
+                                    You have reached level {{h.level}} for {{h.workout_name}} in date {{h.date}}
+                                    <hr class="" style="border: 0.1px solid white; height: 0;">
+                                  </div>
+                                  
                                 </p>
-                                <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: {% widthratio workout_plan.progress 1 20 %}%" aria-valuenow="{{ workout_plan.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
                             </div>  
                           </form>
-                        
-                          {% endfor %}
+                          {%endfor%}
                         </div>
                       </div>
                     </div>

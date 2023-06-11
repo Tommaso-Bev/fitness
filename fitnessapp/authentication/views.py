@@ -3,8 +3,10 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.utils.safestring import mark_safe
-from .models import workout, workout_plan, workout_level
+from .models import workout, workout_plan, workout_level, history_per_workout
 from django.shortcuts import get_object_or_404
+from datetime import datetime
+
 # Create your views here.
 
 def Home(request):
@@ -74,10 +76,14 @@ def register_workout(request):
     if request.method == 'POST':
         username=request.user.username
         workout_name=request.POST.get('workout_name')
+        user = User.objects.get(username=username)
+        workout_instance = workout.objects.get(workout_name=workout_name)
         if workout_plan.objects.filter(username=username, workout_name=workout_name).exists():
             return redirect('workouts')
         workoutp=workout_plan(username=username, workout_name=workout_name)
         workoutp.save()
+        plan=history_per_workout(username=user, workout_name=workout_instance, level=0, date=datetime.now())
+        plan.save()
         return redirect('profile')
     return render(request, 'workouts.html')
 
@@ -94,26 +100,29 @@ def update_workout_plan(request, workout_name):
     w = workout.objects.get(workout_name=workout_name)
     w_plan = workout_plan.objects.get(username=request.user.username, workout_name=workout_name)
     l = workout_level.objects.get(workout_name=w, level=w_plan.progress)
+    show_button = w_plan.progress < 5
+    user = User.objects.get(username=request.user)
+    workout_instance = workout.objects.get(workout_name=workout_name)
     
+
     if request.method == 'POST' and request.POST.get('button_clicked'):
         w_plan.progress += 1
         w_plan.save()
+        plan=history_per_workout(username=user, workout_name=workout_instance, level=w_plan.progress, date=datetime.now())
+        plan.save()
+        progress_multiplier = 20
+        multiplied_progress = w_plan.progress * progress_multiplier
         show_button = w_plan.progress < 5
         return redirect('workoutprogression', workout_name=workout_name)
     
-    show_button = w_plan.progress < 5
-    return render(request, 'workoutprogression.html', {'w_plan': w_plan, 'w': w, 'w_level': l, 'show': show_button})
-
-def workoutprogression(request, workout_name):
-    # Retrieve workout progress
-    w_plan = WorkoutPlan.objects.get(workout_name=workout_name)
-    
-    # Perform multiplication in the view
     progress_multiplier = 20
     multiplied_progress = w_plan.progress * progress_multiplier
+    show_button = w_plan.progress < 5
+    return render(request, 'workoutprogression.html', {'w_plan': w_plan, 'w': w, 'w_level': l, 'show': show_button, 'multiplied_progress': multiplied_progress})
 
-    context = {
-        'w_plan': w_plan,
-        'multiplied_progress': multiplied_progress,
-    }
-    return render(request, 'workoutprogression.html', context)
+def workhistory(request):
+    user=request.user
+    username=user.username
+    username = mark_safe(username)
+    history=history_per_workout.objects.filter(username=user)
+    return render(request, "workhistory.html", {'username':username, 'history': history})

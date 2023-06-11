@@ -59,11 +59,10 @@
                                 <div class="row mt-5 justify-content-center text-white">{{w.description}}</div>
                                 
                                 <div class="progress">
-                                    <div class="progress-bar bg-danger" style="width: {{ w_plan.progress|multiply:20 }}%;"></div>
-
+                                    <div class="progress-bar bg-danger" style="width: {% widthratio w_plan.progress 1 20 %}%"></div>
                                 </div>
                             </div>
-                            
+                            <div class="text-white">{{multiplied_progress}}</div>
                         </div>
                         <div>
                             <div class="text-danger">{{w_level.level}}</div>
